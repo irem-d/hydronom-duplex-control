@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mission",
+  "type": "object",
+  "required": [
+    "task_id",
+    "name",
+    "vehicle_id",
+    "mode",
+    "waypoints",
+    "constraints"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "vehicle_id": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "MANUAL",
+        "AUTONOMOUS",
+        "EMERGENCY"
+      ]
+    },
+    "waypoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "lat",
+          "lon",
+          "hold_s"
+        ],
+        "properties": {
+          "lat": {
+            "type": "number"
+          },
+          "lon": {
+            "type": "number"
+          },
+          "hold_s": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "max_speed_mps": {
+          "type": "number"
+        },
+        "keep_depth_m": {
+          "type": "number"
+        }
+      }
+    },
+    "created_by": {
+      "type": "string"
+    }
+  }
+}

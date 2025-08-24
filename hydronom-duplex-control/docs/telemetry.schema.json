@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Telemetry",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "vehicle",
+    "pose",
+    "battery",
+    "mission"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "vehicle": {
+      "type": "object",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "boat",
+            "sub"
+          ]
+        }
+      }
+    },
+    "pose": {
+      "type": "object",
+      "required": [
+        "lat",
+        "lon",
+        "heading_deg",
+        "speed_mps"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        },
+        "heading_deg": {
+          "type": "number"
+        },
+        "speed_mps": {
+          "type": "number"
+        }
+      }
+    },
+    "depth_m": {
+      "type": "number"
+    },
+    "imu": {
+      "type": "object",
+      "properties": {
+        "roll_deg": {
+          "type": "number"
+        },
+        "pitch_deg": {
+          "type": "number"
+        },
+        "yaw_deg": {
+          "type": "number"
+        }
+      }
+    },
+    "thrusters": {
+      "type": "object",
+      "properties": {
+        "left_pwm": {
+          "type": "number"
+        },
+        "right_pwm": {
+          "type": "number"
+        }
+      }
+    },
+    "rudder_deg": {
+      "type": "number"
+    },
+    "ballast": {
+      "type": "object",
+      "properties": {
+        "level_pct": {
+          "type": "number"
+        }
+      }
+    },
+    "battery": {
+      "type": "object",
+      "required": [
+        "voltage",
+        "soc_pct"
+      ],
+      "properties": {
+        "voltage": {
+          "type": "number"
+        },
+        "soc_pct": {
+          "type": "number"
+        }
+      }
+    },
+    "leak": {
+      "type": "boolean"
+    },
+    "temp_c": {
+      "type": "number"
+    },
+    "mission": {
+      "type": "object",
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "MANUAL",
+            "AUTONOMOUS",
+            "EMERGENCY"
+          ]
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "waypoint_index": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
