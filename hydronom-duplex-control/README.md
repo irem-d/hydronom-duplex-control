@@ -59,5 +59,4 @@ hydronom-duplex-control/
   docs/
 ```
 
-## License
-MIT (educational demo).
+
